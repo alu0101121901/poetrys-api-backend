@@ -1,11 +1,19 @@
-GET http://localhost:3001/api/poetryArray
-###
-POST http://localhost:3001/api/poetryArray 
-Content-Type: application/json
+const mongoose = require('mongoose')
 
-{
-    "title": "Revolucionaria",
-    "content": ["Latidos que borran fronteras.", 
+const connectionString = process.env.MONGO_DB_URI
+
+mongoose.connect(connectionString)
+  .then(() => {
+    console.log('Database connected')
+  }).catch(err => {
+    console.log(err)
+  })
+
+// Se debe definir un esquema para el poema
+
+/* const poetry = new Poetry({
+  title: "Revolucionaria",
+  content: ["Latidos que borran fronteras.", 
     "Mirada que refleja libertad.",
     "Su piel como color de mi bandera", 
     "y su voz como mi himno nacional.",
@@ -23,5 +31,17 @@ Content-Type: application/json
     "En sus ojos, eterno esbozo de sinceridad.",
     "Contra ella perdería toda guerra,",
     "pues a su vera obtengo la mayor paz",
-    "que se pueda sentir sobre La Tierra."]
-}
+    "que se pueda sentir sobre La Tierra."],
+  likes: 51,
+})
+
+poetry.save()
+  .then(result => {
+    console.log(result)
+    mongoose.connection.close()
+  })
+  .catch(err => {
+    console.error(err)
+  }) */
+
+
