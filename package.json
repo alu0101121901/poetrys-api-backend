@@ -10,12 +10,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Rafael Cala González",
   "license": "ISC",
   "devDependencies": {
     "eslint": "7.32.0",
     "eslint-config-google": "0.14.0",
-    "nodemon": "2.0.13"
+    "nodemon": "2.0.13",
+    "prettier": "2.4.1"
   },
   "dependencies": {
     "cors": "2.8.5",
