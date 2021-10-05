@@ -1,18 +1,5 @@
 require("dotenv").config();
-// require('./mongo')
-
-const mongoose = require("mongoose");
-
-const connectionString = process.env.MONGO_DB_URI;
-
-mongoose
-  .connect(connectionString)
-  .then(() => {
-    console.log("Database connected");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+require("./mongo");
 
 const express = require("express");
 const cors = require("cors");
@@ -34,7 +21,6 @@ app.get("/api/poetryArray", (request, response) => {
   Poetry.find({}).then((poetrys) => {
     console.log(poetrys);
     response.json(poetrys);
-    mongoose.connection.close();
   });
 });
 
@@ -55,7 +41,6 @@ app.post("/api/poetryArray", (request, response) => {
 
   newPoetry.save().then((savedNote) => {
     response.json(savedNote);
-    mongoose.connection.close();
   });
 });
 
@@ -82,7 +67,6 @@ app.delete("/api/poetryArray/:id", (request, response, next) => {
     .then((result) => {
       console.log(result);
       response.status(204).end();
-      mongoose.connection.close();
     })
     .catch((err) => {
       next(err);
